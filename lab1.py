@@ -26,6 +26,5 @@ def func2(num):
     else:
       return max(nums)
 
-
 print(func1(int(input())))
 print(func2(int(input())))
