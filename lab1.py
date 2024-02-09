@@ -15,4 +15,17 @@ def func1(prime):
   print(nodivs)
   return len(nodivs)
 
+def func2(num):
+  nums = []
+  while num != 0:
+    nums.insert(-0,num % 10)
+    num //= 10
+  while True:
+    if max(nums) % 3 == 0:
+      nums.remove(max(nums))
+    else:
+      return max(nums)
+
+
 print(func1(int(input())))
+print(func2(int(input())))
