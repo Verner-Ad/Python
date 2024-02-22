@@ -3,7 +3,12 @@ def pal(str):
     return str.lower() == ''.join(reversed(str))
 
 #task 3
+def numOfSplit(str):
+    return len(str.split())
 
-def 
+#task4
+def order(str):
+    return sorted(str.split(), key=len)
 
-print(pal(input()))
+a = [pal,numOfSplit,order]
+print(a[int(input())](input()))
