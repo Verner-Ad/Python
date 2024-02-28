@@ -13,4 +13,13 @@ def unusedChar():
         c = c.replace(i,'')
     print(c)
 
-unusedChar()
+def moreFive():
+    c = 0
+    for i in re.findall(r'\d', input()):
+        if int(i)>5:
+            c+=1
+    print(c)
+
+#Выбор задачи
+a = [lessFive,unusedChar,moreFive]
+print(a[int(input())](input()))
