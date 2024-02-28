@@ -20,6 +20,5 @@ def moreFive():
             c+=1
     print(c)
 
-#Выбор задачи
 a = [lessFive,unusedChar,moreFive]
 print(a[int(input())](input()))
