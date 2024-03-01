@@ -1,5 +1,3 @@
-import re
-
 freq = {
 "a": 0.0817,
 "b": 0.0149,
@@ -29,15 +27,6 @@ freq = {
 "z": 0.0007
 }
 
-def diff(x):
-    return abs(len( r'[qwrtpsdfghjklzxcvbnm]', x, re.IGNORECASE) - len(r'[eyuioa]', x, re.IGNORECASE))
-
-def chardifrange():
-    strs = []
-    for i in range(int(input())):
-        strs[i].insert(input())
-    print(strs.sort(key = lambda string: diff(string)))
-
 def mostusual(str):
     maxChar = {}
     for i in str:
@@ -52,7 +41,7 @@ def mostusual(str):
             c = [i,maxChar[i]]
     return c
 
-def difusualchar():
+def quaddifusualchar():
     strs = []
     for _ in range(int(input())):
         strs.append(input())
@@ -65,30 +54,5 @@ def difusualchar():
                 masStr[j][1], masStr[j+1][1] = masStr[j+1][1], masStr[j][1]
     print(masStr)
 
-"""
-5
-qqqwwq
-wwweew
-rrrtte
-aaaassa
-aaaas
-"""
+quaddifusualchar()
 
-def quad_dev(x, y):
-        numerator = 0
-        amount = 0
-        for i in range(len(x)):
-            numerator += (x - y)**2
-            amount += 1
-        return (numerator / amount)**0.5
-
-def quaddifASCII():
-    strs = []
-    c = 0
-    for _ in range(int(input())):
-        strs.append(input())
-    for i in strs:
-        for j in i:
-            if ord(j) > c:
-                c = ord(j)
-        #выборка по разницам, константа по макс коду в строке, доделай квад откл
