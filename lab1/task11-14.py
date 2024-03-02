@@ -28,19 +28,20 @@ freq = {
 "y": 0.0197,
 "z": 0.0007
 }
-
+#task11
 def diff(x):
     return abs(len( r'[qwrtpsdfghjklzxcvbnm]', x, re.IGNORECASE) - len(r'[eyuioa]', x, re.IGNORECASE))
 
 def chardifrange():
     strs = []
-    for i in range(int(input())):
+    i = int(input())
+    for i in range(i):
         strs[i].insert(input())
     print(strs.sort(key = lambda string: diff(string)))
-
-def mostusual(str):
+#task12
+def mostusual(str_):
     maxChar = {}
-    for i in str:
+    for i in str_:
         if i in maxChar:
             maxChar[i] += 1
         else:
@@ -54,7 +55,8 @@ def mostusual(str):
 
 def difusualchar():
     strs = []
-    for _ in range(int(input())):
+    i = int(input())
+    for _ in range(i):
         strs.append(input())
     masStr = []
     for i in strs:
@@ -73,22 +75,49 @@ rrrtte
 aaaassa
 aaaas
 """
-
-def quad_dev(x, y):
+#task13
+def quaddev(x, y):
         numerator = 0
         amount = 0
-        for i in range(len(x)):
-            numerator += (x - y)**2
+        for i in range(len(x)//2): #середина при нечетных не учитывается, ибо там разница символов ноль
+            numerator += (ord(x[i]) - ord(x[len(x)-1-i]) - y)**2
             amount += 1
+        print([x,(numerator / amount)**0.5])
         return (numerator / amount)**0.5
+
+def maxord(strs):
+    c = 0
+    for j in strs:
+            if ord(j) > c:
+                c = ord(j)
+    return c
 
 def quaddifASCII():
     strs = []
-    c = 0
-    for _ in range(int(input())):
+    i = int(input())
+    for _ in range(i):
         strs.append(input())
+    print(strs)
+    strs.sort(key = lambda x:quaddev(x,maxord(x)))
+    print(strs)
+#task14
+def amounttriple(x):
+    amount = 0
+    for i in range (0,len(x)-2):
+        if x[i] == x[i+2] and x[i] != x[i+1]:
+            amount += 1
+    return amount
+
+def trilemirror():
+    strs = []
+    c = 0
+    i = int(input())
+    for _ in range(i):
+        strs.append(input())
+    strs.sort(key = lambda st: amounttriple(st))
+    
     for i in strs:
-        for j in i:
-            if ord(j) > c:
-                c = ord(j)
-        #выборка по разницам, константа по макс коду в строке, доделай квад откл
+        print(i)
+
+a = [chardifrange,difusualchar,quaddifASCII,trilemirror]
+print(a[int(input())]())

@@ -2,23 +2,26 @@ import re
 
 def lessFive():
     c = 0
-    for i in re.findall(r'[0-9]{1,}', input()):
+    s = input()
+    for i in re.findall(r'[0-9]{1,}',s):
         if int(i)<5:
             c+=1
     print(c)
 
 def unusedChar():
     c = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz'
-    for i in re.findall(r'[a-zA-z]',input()):
+    s = input()
+    for i in re.findall(r'[a-zA-z]',s):
         c = c.replace(i,'')
     print(c)
 
 def moreFive():
     c = 0
-    for i in re.findall(r'\d', input()):
+    s = input()
+    for i in re.findall(r'\d', s):
         if int(i)>5:
             c+=1
     print(c)
 
 a = [lessFive,unusedChar,moreFive]
-print(a[int(input())](input()))
+print(a[int(input())]())
