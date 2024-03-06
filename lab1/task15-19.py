@@ -1,5 +1,5 @@
 #task 15 10
-def sameel():
+def sameEl():
     mas2 = []
     mas1 = []
     c = 0
@@ -19,7 +19,7 @@ def sameel():
     return c
 
 #task 16 22
-def mininline():
+def minInLine():
     lineMas = []
     mas = []
     num = int(input())
@@ -35,7 +35,7 @@ def mininline():
     return lineMas.count(min(lineMas))
 
 #task 17 34
-def inrange():
+def inRange():
     lineMas = []
     mas = []
     num = int(input())
@@ -51,7 +51,38 @@ def inrange():
     return lineMas
 
 #task 18 46
-def 
+def plusMinus():
+    mas = []
+    num = int(input())
+    for _ in range(num):
+        mas.append(input())
+    for i in mas:
+        if i > 0:
+            print(i)
+    for i in mas:
+        if i < 0:
+            print(i)
 
 #task 19 58
+def partsFromParts():
+    mas = []
+    c = 0
+    num = int(input())
+    for _ in range(num):
+        mas.append(input())
+    for sumEl in mas:
+        indS = mas.index(sumEl)
+        mas.remove(sumEl)
+        for difEl in mas:
+            indD = mas.index(difEl)
+            mas.remove(difEl)
+            for resEl in mas:
+                if sumEl - difEl == resEl:
+                    c += 1
+                break
+            mas.insert(indD,difEl)
+            break
+        mas.insert(indS, sumEl)
+    return c
+
 
