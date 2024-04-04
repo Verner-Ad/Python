@@ -1,48 +1,62 @@
 from math import sqrt
-delta, eps = 0.2, 0.5
-a, b = 0, 10
-def fibba(N):
-    if N == 0:
-        return 0
-    elif N == 1:
-        return 1
-    return fibba(N - 1) + fibba(N - 2)
-def f(x):
-    return 2 * x ** 2 - 12 * x + 19
-N = 0
-L = b - a
-fibs = [fibba(N)]
-while fibba(N) < L / eps:
-    N += 1
-    fibs.append(fibba(N))
-x = a + fibs[N - 2] / fibs[N] * (b - a)
-y = a + fibs[N - 1] / fibs[N] * (b - a)
-i = 0
-for k in range(N - 2):
-    i+=1
-    if f(x) <= f(y):
-        b = y
-        y = x
-        x = a + fibs[N - k - 3] / fibs[N - k - 1] * (b - a)
+
+def f(x1, x2):
+    return 3 * x1 ** 2 + 4 * x2 ** 2 - 2 * x1 * x2 + x1
+
+def golden_ratio(f, a, b, l):
+    while abs(b - a) > 2 * l:
+        x = a + (3 - sqrt(5)) / 2 * (b - a)
+        y = a + b - x
+        if f(x) <= f(y):
+            b = y
+            y = x
+            x = a + b - x
+        else:
+            a = x
+            x = y
+            y = a + b - y
+    return (a + b) / 2
+
+def grad(f, x1, x2):
+    h = 1e-10
+    return [(f(x1 + h, x2) - f(x1, x2)) / h, (f(x1, x2 + h) - f(x1, x2)) / h]
+
+def euclid_norm(x1, x2):
+    return sqrt(x1 ** 2 + x2 ** 2)
+
+M = 50
+eps1, eps2 = 0.1, 0.15
+x0 = [2, 1,5]
+x = []
+x.append(x0)
+k = 0
+step_four_cond = False
+while k < M:
+    def varphi(t):
+        return f(x[-1][0] - t * grad(f, x[-1][0], x[-1][1])[0], x[-1][1] - t * grad(f, x[-1][1], x[-1][1])[1])
+    a, b = -10, 10
+    t_min = a
+    while t_min == a or t_min == b:
+        t_min = golden_ratio(varphi, a, b, eps1)
+        if abs(t_min - a) <= eps1:
+            a -= 10
+            b -= 10
+            t_min = b
+        if abs(t_min - b) <= eps1:
+            a += 10
+            b += 10
+            t_min = a
+    x.append([x[-1][0] - t_min * grad(f, x[-1][0], x[-1][1])[0], x[-1][1] - t_min * grad(f, x[-1][1], x[-1][1])[1]])
+    grad_f = grad(f, x[-1][0], x[-1][1])
+    if euclid_norm(grad_f[0], grad_f[1]) < eps1:
+        break
+    if k > 1 and euclid_norm(x[-1][0] - x[-2][0], x[-1][1] - x[-2][1]) < eps2:
+        if step_four_cond:
+            break
+        else:
+            step_four_cond = True
     else:
-        a = x
-        x = y
-        y = a + fibs[N - k - 2] / fibs[N - k - 1] * (b - a)
-    if abs(b - a) < 2 * eps:
-        ab = (a + b) / 2
-        print("x* ~= ", ab)
-        print("f(x*) ~= ", f(ab))
-        print(abs(f(ab)-f(3)))
-        print(i)
-        exit(0)
-    x = (a + b) / 2
-    y = x + delta
-    if f(x) <= f(y):
-        b = y
-    else:
-        a = x
-ab = (a + b) / 2
-print("x* ~= ", ab)
-print("f(x*) ~= ", f(ab))
-print(abs(f(ab)-f(3)))
-print(i)
+        step_four_cond = False
+    k += 1
+print("x* ~=", x[-1])
+print("f(x*) =", f(x[-1][0], x[-1][1]))	
