@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Hospital</title>
+</head>
+<body>
+    <form action="/cgi/form.py">
+        <label>
+            Автор<br>
+            <input name="first_name" placeholder="First name">
+            <input name="surname" placeholder="Surname">
+            <input name="sex" placeholder="Sex">
+        </label><br><br>
+        <label>
+            Картина<br>
+            <input name="PIC_NAME" placeholder="Picture name">
+            <input name="CRE_DATE" placeholder="Date of creating">
+            <input name="GENRE" placeholder="Genre">
+            <input name="MATERIAL" placeholder="Material"> 
+            <input name="HEIGHT" placeholder="Height">   
+            <input name="WIDTH" placeholder="Width">   
+            <input name="AUTHOR_ID" placeholder="Author ID">   
+            <input name="GALLERY_ID" placeholder="Gallery ID">
+        </label><br><br>
+        <input type="submit" value="Add to database">
+    </form><br>
+    <form action="/cgi/output.py">
+        <input type="submit" value="Print tables">
+    </form><br>
+    <form action="/cgi/export.py">
+        <input name="table" placeholder="Table">
+        <input type="submit" value="Export table to XML">
+    </form><br>
+    <form action="/cgi/droptable.py">
+        <input name="table_to_drop" placeholder="Table">
+        <input type="submit" value="Drop table">
+    </form><br>
+    <form action="/cgi/import.py">
+        <textarea name="xml" rows=10 cols=40>
+Write your table in XML format.
+        </textarea><br>
+        <input type="submit" value="Import table from XML">
+    </form>
+</body>
+</html>
