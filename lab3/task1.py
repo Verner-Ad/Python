@@ -145,7 +145,7 @@ penta = Pentagon(Point(-1,4),Point(0,0),Point(4,0),Point(5,4),Point(2,6))
 
 def is_intersect(pn, tr):
     if not isinstance(tr, Triangle) or not isinstance(pn, Pentagon):
-        raise print("Triangle and pentagon types should be passed")
+        raise TypeError("Triangle and pentagon types should be passed")
     for i in range(3):
         for j in range(i + 1, 3):
             tr_p1 = tr.getPoints()[i]

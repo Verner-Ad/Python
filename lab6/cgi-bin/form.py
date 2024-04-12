@@ -1,6 +1,7 @@
 from warnings import filterwarnings
 import cgi
 import sqlite3
+import sys
 
 # ignore msg that cgi is deprecated
 filterwarnings("ignore")
@@ -32,12 +33,13 @@ con = sqlite3.connect("painting.db")
 cur = con.cursor()
 
 if all((FIRST_NAME, SURNAME, SEX)):
-    query = f"INSERT INTO address (FIRST_NAME, SURNAME, SEX) VALUES ('{FIRST_NAME}', '{SURNAME}', '{SEX}')"
+    print("jorik", file=sys.stderr)
+    query = f"INSERT INTO AUTHOR (FIRST_NAME, SURNAME, SEX) VALUES ('{FIRST_NAME}', '{SURNAME}', '{SEX}')"
     cur.execute(query)
     con.commit()
 
 if all((PIC_NAME, CRE_DATE, GENRE, MATERIAL, HEIGHT, WIDTH, AUTHOR_ID, GALLERY_ID)):
-    query = f"INSERT INTO person (PIC_NAME, CRE_DATE, GENRE, MATERIAL, HEIGHT, WIDTH, AUTHOR_ID, GALLERY_ID) VALUES ('{PIC_NAME}', '{CRE_DATE}', '{GENRE}', '{MATERIAL}', '{HEIGHT}', '{WIDTH}', '{AUTHOR_ID}', '{GALLERY_ID}')"
+    query = f"INSERT INTO PAINTING (PIC_NAME, CRE_DATE, GENRE, MATERIAL, HEIGHT, WIDTH, AUTHOR_ID, GALLERY_ID) VALUES ('{PIC_NAME}', '{CRE_DATE}', '{GENRE}', '{MATERIAL}', '{HEIGHT}', '{WIDTH}', '{AUTHOR_ID}', '{GALLERY_ID}')"
     cur.execute(query)
     con.commit()
     

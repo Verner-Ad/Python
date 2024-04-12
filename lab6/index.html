@@ -2,15 +2,15 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Hospital</title>
+<title>Painting</title>
 </head>
 <body>
-    <form action="/cgi/form.py">
+    <form action="/cgi-bin/form.py">
         <label>
             Автор<br>
-            <input name="first_name" placeholder="First name">
-            <input name="surname" placeholder="Surname">
-            <input name="sex" placeholder="Sex">
+            <input name="FIRST_NAME" placeholder="First name">
+            <input name="SURNAME" placeholder="Surname">
+            <input name="SEX" placeholder="Sex">
         </label><br><br>
         <label>
             Картина<br>
@@ -25,18 +25,18 @@
         </label><br><br>
         <input type="submit" value="Add to database">
     </form><br>
-    <form action="/cgi/output.py">
+    <form action="/cgi-bin/output.py">
         <input type="submit" value="Print tables">
     </form><br>
-    <form action="/cgi/export.py">
+    <form action="/cgi-bin/export.py">
         <input name="table" placeholder="Table">
         <input type="submit" value="Export table to XML">
     </form><br>
-    <form action="/cgi/droptable.py">
+    <form action="/cgi-bin/droptable.py">
         <input name="table_to_drop" placeholder="Table">
         <input type="submit" value="Drop table">
     </form><br>
-    <form action="/cgi/import.py">
+    <form action="/cgi-bin/import.py">
         <textarea name="xml" rows=10 cols=40>
 Write your table in XML format.
         </textarea><br>
