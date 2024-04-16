@@ -3,7 +3,7 @@ from math import sqrt
 def f(x1, x2):
     return 3 * x1 ** 2 + 4 * x2 ** 2 - 2 * x1 * x2 + x1
 
-def golden_ratio(f, a, b, l):
+def GoldRat(f, a, b, l):
     while abs(b - a) > 2 * l:
         x = a + (3 - sqrt(5)) / 2 * (b - a)
         y = a + b - x
@@ -17,46 +17,49 @@ def golden_ratio(f, a, b, l):
             y = a + b - y
     return (a + b) / 2
 
-def grad(f, x1, x2):
+def Grad(f, x1, x2):
     h = 1e-10
     return [(f(x1 + h, x2) - f(x1, x2)) / h, (f(x1, x2 + h) - f(x1, x2)) / h]
 
-def euclid_norm(x1, x2):
+def Phi(t):
+    return f(x[-1][0] - t * Grad(f, x[-1][0], x[-1][1])[0], x[-1][1] - t * Grad(f, x[-1][1], x[-1][1])[1])
+    
+def ENorm(x1, x2):
     return sqrt(x1 ** 2 + x2 ** 2)
 
-M = 50
-eps1, eps2 = 0.1, 0.15
 x0 = [2, 1,5]
 x = []
 x.append(x0)
+M = 50
 k = 0
-step_four_cond = False
+e1, e2 = 0.1, 0.15
+stepFourCond = False
 while k < M:
-    def varphi(t):
-        return f(x[-1][0] - t * grad(f, x[-1][0], x[-1][1])[0], x[-1][1] - t * grad(f, x[-1][1], x[-1][1])[1])
     a, b = -10, 10
-    t_min = a
-    while t_min == a or t_min == b:
-        t_min = golden_ratio(varphi, a, b, eps1)
-        if abs(t_min - a) <= eps1:
+    tMin = a
+    while tMin == a or tMin == b:
+        tMin = GoldRat(Phi, a, b, e1)
+        if abs(tMin - a) <= e1:
             a -= 10
             b -= 10
-            t_min = b
-        if abs(t_min - b) <= eps1:
+            tMin = b
+        if abs(tMin - b) <= e1:
             a += 10
             b += 10
-            t_min = a
-    x.append([x[-1][0] - t_min * grad(f, x[-1][0], x[-1][1])[0], x[-1][1] - t_min * grad(f, x[-1][1], x[-1][1])[1]])
-    grad_f = grad(f, x[-1][0], x[-1][1])
-    if euclid_norm(grad_f[0], grad_f[1]) < eps1:
+            tMin = a
+    x.append([x[-1][0] - tMin * Grad(f, x[-1][0], x[-1][1])[0], x[-1][1] - tMin * Grad(f, x[-1][1], x[-1][1])[1]])
+    gradF = Grad(f, x[-1][0], x[-1][1])
+    if ENorm(gradF[0], gradF[1]) < e1:
         break
-    if k > 1 and euclid_norm(x[-1][0] - x[-2][0], x[-1][1] - x[-2][1]) < eps2:
-        if step_four_cond:
+    if k > 1 and ENorm(x[-1][0] - x[-2][0], x[-1][1] - x[-2][1]) < e2:
+        if stepFourCond:
             break
         else:
-            step_four_cond = True
+            stepFourCond = True
     else:
-        step_four_cond = False
+        stepFourCond = False
     k += 1
-print("x* ~=", x[-1])
-print("f(x*) =", f(x[-1][0], x[-1][1]))	
+print("xk min =", x[-1])
+print("f(xk) min =", f(x[-1][0], x[-1][1]))
+print("delta x = ", abs(-2/11 - x[-1][0]),', ',abs(-1/22 - x[-1][1]))
+print("delta f(x) = ", f(-2/11,-1/22) - f(x[-1][0],x[-1][1]))

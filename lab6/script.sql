@@ -38,35 +38,35 @@ CREATE TABLE ADRESS (
 
 INSERT INTO ADRESS (COUNTRY, REGION, CITY, STREET, HOUSE_NUMBER)
 VALUES
-    ("Россия", "Москвоская область", "Москва", "Лаврушинский переулок", 10),
-    ("Россия", "Ленинградская область", "Санкт-Петербург", "улица Инженерная", 4),
-    ("Россия", "Москвоская область", "Москва", "Улица Волхонка", 15),
-    ("Беларусь", "Минская область", "Минск", "Улица Ленина", 20);
+    ("Russia", "Moscow region", "Moscow", "Lavrushinsky Lane", 10),
+    ("Russia", "Leningrad region", "St. Peterburg", "Inzhenernaya street", 4),
+    ("Russia", "Moscow region", "Moscow", "Volkhonka Street", 15),
+    ("Belarus", "Minsk region", "Minsk", "Lenin Street", 20);
     
 INSERT INTO GALLERY (GAL_NAME, FOUND_DATE, ADRESS_ID)
 VALUES
-    ("Третьяковская галерея", "1856", 1),
-    ("Государственный Русский музей", "13-04-1895", 2),
-    ("Храм Христа Спасителя", "31-12-1999", 3),
-    ("Национальный художественный музей","5-11-1957", 4);
+    ("Tretyakov Gallery", "1856", 1),
+    ("State Russian Museum", "13-04-1895", 2),
+    ("Cathedral of Christ the Savior", "31-12-1999", 3),
+    ("National Museum of Art","5-11-1957", 4);
 
 INSERT INTO AUTHOR (FIRST_NAME, SURNAME, SEX)
 VALUES
-    ("Врубель", "Врубель", "М"),
-    ("Алексей", "Саврасов", "М"),
-    ("Архип", "Куинджи", "М"),
-    ("Иван", "Крамский", "М"),
-    ("Андрей", "Рублев", "М"),
-    ("Серебрякова", "Серебрякова", "Ж");
+    ("Vrubel", "Vrubel", "M"),
+    ("Alexey", "Savrasov", "M"),
+    ("Arkhip", "Kuindzhi", "M"),
+    ("Ivan", "Kramsky", "M"),
+    ("Andrey", "Rublev", "M"),
+    ("Serebryakova", "Serebryakova", "F");
 
 INSERT INTO PAINTING (PIC_NAME, CRE_DATE, GENRE, MATERIAL, HEIGHT, WIDTH, AUTHOR_ID, GALLERY_ID)
 VALUES
-    ("Демон сидящий", "1890", "Мифологическая сцена", "Холст, масло", 114, 211, 1, 1),
-    ("Грачи прилетели", "1871", "Пейзаж", "Холст, масло", 62, 48, 2, 1),
-    ("Царевна-Лебедь", "1900", "Мифологическая сцена", "Холст, масло", 142, 93, 1, 1),
-    ("Лунная ночь на Днепре", "1880", "Пейзаж", "Холст, масло", 105, 146, 3, 2),
-    ("Неизвестная", "1883", "Портрет", "Холст, масло", 75, 99, 4, 1),
-    ("Троица", "1420", "Икона", "Дерево, темпера", 141, 114, 5, 3),
-    ("За туалетом", "1909", "Автопортрет", "Холст на картоне, масло", 75, 65, 6, 1),
-    ("Забытая деревня", "1874", "Пейзаж", "Холст, масло", 82, 165, 3, 1),
-    ("Зимняя дорога", "1870", "Пейзаж", "Холст, масло", 41, 71, 2, 4);
+    ("Demon Seated", "1890", "Mythological Scene", "Oil on Canvas", 114, 211, 1, 1),
+    ("The Rooks Have Arrived", "1871", "Landscape", "Oil on Canvas", 62, 48, 2, 1),
+    ("The Swan Princess", "1900", "Mythological scene", "Oil on canvas", 142, 93, 1, 1),
+    ("Moonlit Night on the Dnieper", "1880", "Landscape", "Oil on Canvas", 105, 146, 3, 2),
+    ("Unknown", "1883", "Portrait", "Oil on canvas", 75, 99, 4, 1),
+    ("Trinity", "1420", "Icon", "Wood, tempera", 141, 114, 5, 3),
+    ("Behind the toilet", "1909", "Self-portrait", "Oil on canvas on cardboard", 75, 65, 6, 1),
+    ("Forgotten Village", "1874", "Landscape", "Oil on Canvas", 82, 165, 3, 1),
+    ("Winter Road", "1870", "Landscape", "Oil on canvas", 41, 71, 2, 4)
